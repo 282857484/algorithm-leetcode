@@ -1,6 +1,8 @@
 package com.leecode.algorithm.middle.minPathSum;
 
 
+import java.util.Arrays;
+
 public class Solution {
     // 动态规划
     // dp[i][j] = min{dp[i-1][j] + a[i][j], dp[i][j-1] + a[i][j] }
@@ -39,5 +41,23 @@ public class Solution {
     // 深度搜索-回溯算法
     public int minPathSumDeepSearch(int[][] grid) {
         return 0;
+    }
+
+    public int minPathSum1(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] cache = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(cache[i], -1);
+        }
+        return dfs(m - 1, n - 1, grid, cache);
+    }
+    //备忘录法递归
+    public int dfs(int x, int y, int[][] grid, int[][] cache) {
+        if (x < 0 || y < 0) return Integer.MAX_VALUE;
+        if (x == 0 && y == 0) return grid[0][0];
+        if (cache[x][y] != -1) return cache[x][y];
+        cache[x][y] = Math.min(dfs(x - 1, y, grid, cache), dfs(x, y - 1, grid, cache)) + grid[x][y];
+        return cache[x][y];
     }
 }
