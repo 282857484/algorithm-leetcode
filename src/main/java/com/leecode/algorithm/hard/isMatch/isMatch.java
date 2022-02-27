@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.hard.isMatch;
+package  com.leecode.algorithm.hard.isMatch;
 
 public class isMatch {
     public static void main(String[] args){

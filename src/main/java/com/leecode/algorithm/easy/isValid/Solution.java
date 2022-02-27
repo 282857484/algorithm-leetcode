@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.easy.isValid;
+package com.leecode.algorithm.easy.isValid;
 
 import java.util.Stack;
 

@@ -1,6 +1,5 @@
-package src.main.java.com.leecode.algorithm.easy.maxProfit;
+package  com.leecode.algorithm.easy.maxProfit;
 
-import java.util.Arrays;
 
 class Solution {
     public static void main(String[] agrs) {

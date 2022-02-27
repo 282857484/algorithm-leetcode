@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.hard.trap;
+package  com.leecode.algorithm.hard.trap;
 
 class Solution {
     public int trap(int[] height) {

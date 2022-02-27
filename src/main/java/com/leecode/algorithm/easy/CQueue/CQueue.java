@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.easy.CQueue;
+package  com.leecode.algorithm.easy.CQueue;
 
 import java.util.Stack;
 

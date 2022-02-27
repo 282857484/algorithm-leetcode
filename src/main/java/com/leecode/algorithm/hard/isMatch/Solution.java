@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.hard.isMatch;
+package  com.leecode.algorithm.hard.isMatch;
 
 // 正则表达式匹配
 /**

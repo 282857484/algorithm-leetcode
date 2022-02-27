@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.easy.climbStairs;
+package  com.leecode.algorithm.easy.climbStairs;
 
 //70. 爬楼梯
 

@@ -1,4 +1,4 @@
-package src.main.java.com.leecode.algorithm.easy.isValid;
+package com.leecode.algorithm.easy.isValid;
 
 // 20. 有效的括号
 
