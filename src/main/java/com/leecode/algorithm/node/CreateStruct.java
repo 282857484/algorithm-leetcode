@@ -85,7 +85,7 @@ public class CreateStruct {
      * @param nums
      * @return
      */
-    public ListNode createListByArray(int[] nums) {
+    public static ListNode createListByArray(int[] nums) {
         ListNode last = new ListNode();
         ListNode first = new ListNode(0, last);
 
@@ -103,7 +103,7 @@ public class CreateStruct {
      * @param nums
      * @return
      */
-    public TreeNode createTreeByArray(int[] nums) {
+    public static TreeNode createTreeByArray(int[] nums) {
         TreeNode root = new TreeNode(nums[0], null, null);
         Queue<TreeNode> queue = new LinkedBlockingQueue<>();
 
