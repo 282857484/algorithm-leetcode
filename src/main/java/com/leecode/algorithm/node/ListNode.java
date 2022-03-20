@@ -21,4 +21,22 @@ public class ListNode {
             ss = ss.next;
         }
     }
+
+    /**
+     * 反转链表
+     * @param head 头指针
+     * @param tail 尾指针
+     * @return 新的头和尾指针
+     */
+    public ListNode[] reverse(ListNode head, ListNode tail) {
+        ListNode prev = tail.next;
+        ListNode p = head;
+        while (prev != tail) {
+            ListNode nex = p.next;
+            p.next = prev;
+            prev = p;
+            p = nex;
+        }
+        return new ListNode[]{tail, head};
+    }
 }
