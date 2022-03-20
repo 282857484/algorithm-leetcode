@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * 皇后可以横着走、竖着走、斜着走
+ * 回溯算法
  */
 public class Solution {
 
@@ -68,7 +69,7 @@ public class Solution {
         lists.add(list);
     }
 
-    private void mark(int m, int n, boolean reset) {
+    private void markX(int m, int n, boolean reset) {
         int val = 0;
         if (reset){
 //            mark[n][m] = 0;
@@ -134,6 +135,74 @@ public class Solution {
             mark[n][m] = 1;
         }
     }
+    //小优化，没有提速。。。
+    private void mark(int m, int n, boolean reset) {
+        int val = 0;
+        if (reset) {
+//            mark[n][m] = 0;
+            val = -2;
+        } else {
+//            mark[n][m] = 1;
+            val = 2;
+        }
+
+        for (int j = 0; j < len; j++) {
+            if (n == j && m == j) {
+
+            }
+            mark[n][j] += val;
+            mark[j][m] += val;
+        }
+        int i = 0;
+        int j = 0;
+
+        i = m;
+        j = n;
+        i--;
+        j--;
+        while (i >= 0 && j >= 0) {
+            mark[j][i] += val;
+            i--;
+            j--;
+        }
+
+        i = m;
+        j = n;
+        i++;
+        j--;
+        while (j >= 0 && i < len) {
+            mark[j][i] += val;
+            i++;
+            j--;
+        }
+
+        i = m;
+        j = n;
+        i++;
+        j++;
+        while (i < len && j < len) {
+            mark[j][i] += val;
+            i++;
+            j++;
+        }
+
+        i = m;
+        j = n;
+        i--;
+        j++;
+        while (i >= 0 && j < len) {
+            mark[j][i] += val;
+            i--;
+            j++;
+        }
+
+        if (reset) {
+            mark[n][m] = 0;
+        } else {
+            mark[n][m] = 1;
+        }
+    }
+
     private boolean check(int m, int n) {
         if (mark[n][m] > 1) {
             return false;
