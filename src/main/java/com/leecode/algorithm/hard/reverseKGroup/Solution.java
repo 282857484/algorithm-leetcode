@@ -3,6 +3,17 @@ package com.leecode.algorithm.hard.reverseKGroup;
 import com.leecode.algorithm.node.CreateStruct;
 import com.leecode.algorithm.node.ListNode;
 
+/**
+ * 25. K 个一组翻转链表
+ * 给你一个链表，每k个节点一组进行翻转，请你返回翻转后的链表。
+ * k是一个正整数，它的值小于或等于链表的长度。
+ * 如果节点总数不是k的整数倍，那么请将最后剩余的节点保持原有顺序。
+ *
+ * 进阶：
+ *
+ * 你可以设计一个只使用常数额外空间的算法来解决此问题吗？
+ * 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
+ */
 
 class Solution {
     public static void main(String[] args) {
@@ -38,14 +49,14 @@ class Solution {
                 }
             }
             // 保存tail.next
-            ListNode nex = tail.next;
+            ListNode tmp = tail.next;
             // 翻转子链表并返回新子链表的头和尾
             ListNode[] reverse = reverse(head, tail);
             head = reverse[0];
             tail = reverse[1];
             // 把子链表重新接回原链表
             pre.next = head;
-            tail.next = nex;
+            tail.next = tmp;
             pre = tail;
             head = tail.next;
         }
