@@ -10,8 +10,10 @@ import com.leecode.algorithm.node.ListNode;
 class Solution {
     public static void main(String[] agrs) {
         Solution s= new Solution();
-        s.mergeTwoLists(CreateStruct.createListByArray(new int[]{1,2,4}),CreateStruct.createListByArray(new int[]{1,3,4}))
+        s.mergeTwoList(CreateStruct.createListByArray(new int[]{1,2,4}),CreateStruct.createListByArray(new int[]{1,3,4}))
         .print();
+        s.mergeTwoLists(CreateStruct.createListByArray(new int[]{1,2,4}),CreateStruct.createListByArray(new int[]{1,3,4}))
+                .print();
     }
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
@@ -36,5 +38,22 @@ class Solution {
             }
         }
         return head.next;
+    }
+
+    public ListNode mergeTwoList(ListNode l1,ListNode l2){
+        ListNode pre=new ListNode(0);
+        ListNode cur=pre;
+        while(l1!=null&&l2!=null){
+            if(l1.val<l2.val){
+                cur.next=l1;
+                l1=l1.next;
+            }else{
+                cur.next=l2;
+                l2=l2.next;
+            }
+            cur=cur.next;
+        }
+        cur.next=l1==null?l2:l1;
+        return pre.next;
     }
 }
