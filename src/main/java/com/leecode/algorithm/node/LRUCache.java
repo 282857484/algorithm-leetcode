@@ -1,8 +1,8 @@
-package com.leecode.algorithm.tx.lrucache;
+package com.leecode.algorithm.node;
 
 import java.util.HashMap;
 
-class LRUCache {
+public class LRUCache {
     class LinkedValueNode {
         Integer key;
         Integer value;

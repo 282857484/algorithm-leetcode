@@ -1,5 +1,8 @@
 package com.leecode.algorithm.tx.lrucache;
 
+import com.leecode.algorithm.node.LRUCache;
+
+
 public class txlrucache {
     public static void main1(String[] args) throws InterruptedException {
         LRUCache lRUCache = new LRUCache(2);

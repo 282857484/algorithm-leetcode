@@ -1,4 +1,4 @@
-package com.leecode.algorithm.tx.lrucache;
+package com.leecode.algorithm.node;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
-class LRUCache2 {
+public class LRUCache2 {
     protected HashMap<Integer, Integer> map = null;
     protected LinkedBlockingQueue<Integer> queue = null;
 
