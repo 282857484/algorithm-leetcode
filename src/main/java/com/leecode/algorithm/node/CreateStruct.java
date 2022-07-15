@@ -24,7 +24,7 @@ public class CreateStruct {
     }
 
     /**
-     * 打印每一层节点，先
+     * 层序遍历
      * @param tree
      */
     private void reverseVisitorX(TreeNode tree) {
@@ -49,12 +49,12 @@ public class CreateStruct {
         // 前序遍历
 //        System.out.println(tree.val);
         if (tree.left != null) {
-            reverseVisitorX(tree.left);
+            reverseVisitor(tree.left);
         }
         // 中序遍历
 //        System.out.println(tree.val);
         if (tree.right != null) {
-            reverseVisitorX(tree.right);
+            reverseVisitor(tree.right);
         }
         // 后序遍历
         System.out.println(tree.val);
