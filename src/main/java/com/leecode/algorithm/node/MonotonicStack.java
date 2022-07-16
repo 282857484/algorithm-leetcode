@@ -1,13 +1,13 @@
 package com.leecode.algorithm.node;
 
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 /**
- * 单调栈
+ * 单调栈，会把小于新压入的对象弹出
  */
-class MonotonicStack<T extends Comparable> {
+public class MonotonicStack<T extends Comparable> {
     public Stack<T> stack;
-
     public MonotonicStack() {
         this.stack = new Stack<T>();
     }
