@@ -46,5 +46,25 @@ public class Solution {
         return str.substring(j, k + 1);
     }
 
+    public static String palindromeY(String s) {
+        int maxlength = 0;
+        int jj = 0;
+        byte[] ss = s.getBytes();
+        // 假设i为回文中心
+        for (int i = 0; i < ss.length; i ++) {
+            int imax = 1;
+            for(int j = i; (j > 0) && ((2*i-j) < ss.length); j--) {
+                if (ss[j] == ss[2*i-j]){
+                    imax ++;
+                }
+            }
+            if (imax > maxlength) {
+                maxlength = imax;
+                jj = i;
+            }
+        }
+        return s.substring(jj - maxlength, jj + maxlength-1);
+    }
+
 
 }
