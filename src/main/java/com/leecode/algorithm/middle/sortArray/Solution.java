@@ -1,8 +1,12 @@
 package com.leecode.algorithm.middle.sortArray;
 
 
+import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 排序方式
+ */
 public class Solution {
     /**
      *
@@ -47,7 +51,7 @@ public class Solution {
         return i + 1;
     }
 
-    private void swap(int[] nums, int i, int j) {
+    public void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
@@ -59,11 +63,11 @@ public class Solution {
         //快排
         //quicksort(nums, 0, nums.length - 1);
         //归并排序
-        mergesort(nums, 0, nums.length - 1);
+//        mergesort(nums, 0, nums.length - 1);
         /**
          堆排序
-         heapsort(nums);
          */
+        heapSort(nums);
         //以下排序过不了
         /*
         冒泡排序(O(n²))
@@ -195,29 +199,78 @@ public class Solution {
         }
     }
     //堆排序----完全二叉树
-    public void heapsort(int[] nums){
-        int size = nums.length;
-        int[] h = new int[size + 1];
-        for(int i = 0; i < size; i++) h[i + 1] = nums[i];
-        for(int i = size / 2; i > 0; i--) down(h, i, size);
-        int len = size;
-        for(int i = 0; i < len; i++) {
-            nums[i] = h[1];
-            h[1] = h[size];
-            size--;
-            down(h, 1, size);
+//    public void heapsortXX(int[] nums){
+//        int size = nums.length;
+//        int[] h = new int[size + 1];
+//        for(int i = 0; i < size; i++) h[i + 1] = nums[i];
+//        for(int i = size / 2; i > 0; i--) down(h, i, size);
+//        int len = size;
+//        for(int i = 0; i < len; i++) {
+//            nums[i] = h[1];
+//            h[1] = h[size];
+//            size--;
+//            down(h, 1, size);
+//        }
+//    }
+//
+//    public void down(int[] h, int x, int size){
+//        int idx = x, l = 2 * x, r = 2 * x + 1;
+//        if(l <= size && h[idx] > h[l]) idx = l;
+//        if(r <= size && h[idx] > h[r]) idx = r;
+//        if(idx != x){
+//            int tmp = h[x]; h[x] = h[idx]; h[idx] = tmp;
+//            down(h, idx, size);
+//        }
+//    }
+
+    /**
+     * 堆排序
+     * @param array 用数组代表一颗完全二叉树
+     * @return
+     */
+    public int[] heapSort(int[] array) {
+        // 找第一个根节点，就看最后一个叶子节点的根节点是谁
+        int lastRoot =  array.length / 2 - 1;
+        // 1、初始化堆
+        for (int i = lastRoot; i >= 0; i--) {
+            heapify(array, array.length, i);
         }
+        // 2、对堆进行排序
+        for (int i = array.length - 1; i >= 0; i--) {
+            swap(array, i, 0);
+            heapify(array, i, 0);
+        }
+
+        return array;
     }
 
-    public void down(int[] h, int x, int size){
-        int idx = x, l = 2 * x, r = 2 * x + 1;
-        if(l <= size && h[idx] > h[l]) idx = l;
-        if(r <= size && h[idx] > h[r]) idx = r;
-        if(idx != x){
-            int tmp = h[x]; h[x] = h[idx]; h[idx] = tmp;
-            down(h, idx, size);
+    /**
+     * （前提：之前对左右节点已经做过此操作）
+     * 对以i为根节点的子树堆化
+     * @param array 依托于数组的二叉树（二叉树构建堆）
+     * @param n 以数组array[0:n]区间内进行堆化
+     * @param i 对位置为i为根节点
+     */
+    public void heapify(int[] array, int n, int i) {
+        if (i >= n) {
+            return;
+        }
+        // 左节点
+        int c1 = 2 * i + 1;
+        // 右节点
+        int c2 = 2 * i + 2;
+        int max = i;
+        if (c1 < n && array[max] < array[c1]) {
+            max = c1;
+        }
+        if (c2 < n && array[max] < array[c2]) {
+            max = c2;
+        }
+        if (i != max) {
+            swap(array, i, max);
+            // 交换的子节点需要对其重新堆化
+            heapify(array, n, max);
         }
     }
-
 
 }
