@@ -4,7 +4,7 @@ public class NumberConverChinese {
     public static void main(String[] args) {
         System.out.println("hello world");
         NumberConverChinese m = new NumberConverChinese();
-        m.numberConverChinese(9100340091L);
+        m.numberConverChinese(9100300091L);
     }
     public String numberConverChinese(long a) {
         long n = 0;
@@ -19,7 +19,7 @@ public class NumberConverChinese {
             chinese.append(convert(n));
             m++;
         }
-        char[] unProcess = chinese.toString().toCharArray();
+        char[] unProcess = chinese.reverse().toString().toCharArray();
 
         // 多个零合并为一个零（零的单位也删除）
         convertZero(unProcess);
@@ -84,10 +84,12 @@ public class NumberConverChinese {
 
     /**
      * 去掉零后面的单位与相邻零
+     * 这个方法有问题
      */
     public void convertZero(char[] a) {
         boolean zeroLeader = false;
         for (int i = 0; i < a.length; i=i+2) {
+            // 合并零
             if (zeroLeader) {
                 if (a[i] == '零') {
                     a[i] = ' ';
@@ -101,6 +103,12 @@ public class NumberConverChinese {
             }
             if ((i+1) < a.length && zeroLeader && (a[i+1] == '千' || a[i+1] == '百' || a[i+1] == '十')) {
                 a[i+1] = ' ';
+            }
+            // 万、亿单独去零
+            if ((i+1) < a.length && (a[i+1] == '万' || a[i+1] == '亿')) {
+                if (a[i] == '零') {
+                    a[i] = ' ';
+                }
             }
         }
     }
