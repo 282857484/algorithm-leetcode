@@ -19,6 +19,8 @@ import com.leecode.algorithm.node.MyHashMap;
 import com.leecode.algorithm.node.ListNode;
 import com.leecode.algorithm.node.MonotonicStack;
 import com.leecode.algorithm.node.Heap;
+// 赛马
+// https://blog.csdn.net/Y_yibao/article/details/103822000
 
 public class Collect {
 
