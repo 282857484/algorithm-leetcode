@@ -4,7 +4,7 @@ public class NumberConverChinese {
     public static void main(String[] args) {
         System.out.println("hello world");
         NumberConverChinese m = new NumberConverChinese();
-        m.numberConverChinese(9187340091L);
+        m.numberConverChinese(9100300091L);
     }
     public String numberConverChinese(long a) {
         long n = 0;
@@ -19,23 +19,13 @@ public class NumberConverChinese {
             chinese.append(convert(n));
             m++;
         }
-        char[] unProcess = chinese.toString().toCharArray();
-        int l = 0;
-        int r = unProcess.length-1;
-        // 翻转字符串
-        while(l<r) {
-            char tmp = unProcess[l];
-            unProcess[l] = unProcess[r];
-            unProcess[r] = tmp;
-            l++;
-            r--;
-        }
+        char[] unProcess = chinese.reverse().toString().toCharArray();
 
-        // 多个零合并为一个零（单位也删除） 可以用快慢指针合并
+        // 多个零合并为一个零（零的单位也删除）
         convertZero(unProcess);
         // 去掉空格
-        convertN(unProcess);
-        return (new String(unProcess)).trim();
+        int end = convertN(unProcess);
+        return (new String(unProcess).substring(0, end)).trim();
     }
     public String convert(long n) {
         switch((int)n){
@@ -75,47 +65,60 @@ public class NumberConverChinese {
             case 4:
                 return "万";
             case 5:
-                return " ";
+                return "十";
             case 6:
-                return "十";
+                return "百";
             case 7:
-                return "百";
-            case 8:
                 return "千";
-            case 9:
+            case 8:
                 return "亿";
-            case 10:
-                return " ";
-            case 11:
+            case 9:
                 return "十";
-            case 12:
+            case 10:
                 return "百";
-            case 13:
+            case 11:
                 return "千";
         }
         return "";
     }
 
     /**
-     slowindex
+     * 去掉零后面的单位与相邻零
+     * 这个方法有问题
      */
-    public int convertZero(char[] a) {
-        int slow = 0;
-        for (int quick = 1; quick < a.length; quick+=2) {
-            if (a[quick] != '零') {
-                a[slow] = a[quick];
-                slow++;
-                a[slow+1] = a[quick+1];
-                slow++;
+    public void convertZero(char[] a) {
+        boolean zeroLeader = false;
+        for (int i = 0; i < a.length; i=i+2) {
+            // 合并零
+            if (zeroLeader) {
+                if (a[i] == '零') {
+                    a[i] = ' ';
+                } else {
+                    zeroLeader = false;
+                }
+            } else {
+                if (a[i] == '零') {
+                    zeroLeader = true;
+                }
+            }
+            if ((i+1) < a.length && zeroLeader && (a[i+1] == '千' || a[i+1] == '百' || a[i+1] == '十')) {
+                a[i+1] = ' ';
+            }
+            // 万、亿单独去零
+            if ((i+1) < a.length && (a[i+1] == '万' || a[i+1] == '亿')) {
+                if (a[i] == '零') {
+                    a[i] = ' ';
+                }
             }
         }
-        return slow;
     }
     //去掉空格
     public int convertN(char[] a) {
         int slow = 0;
-        for (int quick = 1; quick < a.length; quick++) {
-            if (a[quick] != ' ') {
+        for (int quick = 0; quick < a.length; quick++) {
+            if (a[quick] == ' ') {
+
+            } else {
                 a[slow] = a[quick];
                 slow++;
             }

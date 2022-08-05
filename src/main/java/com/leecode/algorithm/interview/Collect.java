@@ -12,6 +12,7 @@ import com.leecode.algorithm.easy.maxSubArray.*;
 import com.leecode.algorithm.middle.restoreIpAddresses.*;
 import com.leecode.algorithm.middle.patternMatching.*;
 import com.leecode.algorithm.easy.convertToBase7.*;
+import com.leecode.algorithm.hard.isMatch.*;
 
 import com.leecode.algorithm.node.LRUCache;
 import com.leecode.algorithm.node.MyHashMap;
