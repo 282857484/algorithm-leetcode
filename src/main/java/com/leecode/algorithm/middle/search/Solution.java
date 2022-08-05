@@ -17,7 +17,7 @@ public class Solution {
         Solution s = new Solution();
         s.search(new int[]{3,1},4);
     }
-
+    // O(n)
     public int search(int[] nums, int target) {
         int barries = minArrayNum(nums);
         int a = Arrays.binarySearch(nums,0,barries,target);
