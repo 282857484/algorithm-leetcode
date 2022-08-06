@@ -3,7 +3,7 @@ package com.leecode.algorithm.node;
 import java.util.ArrayList;
 
 public class TreeNode {
-    int val;
+    public int val;
     public TreeNode left;
     public TreeNode right;
     TreeNode() {}

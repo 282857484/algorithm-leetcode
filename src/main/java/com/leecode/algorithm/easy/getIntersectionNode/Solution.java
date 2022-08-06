@@ -2,6 +2,9 @@ package com.leecode.algorithm.easy.getIntersectionNode;
 
 import com.leecode.algorithm.node.ListNode;
 
+/**
+ * 面试题 02.07. 链表相交
+ */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         int aLen = 0;
