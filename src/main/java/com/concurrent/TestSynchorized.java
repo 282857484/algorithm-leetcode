@@ -3,6 +3,9 @@ package com.concurrent;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * synchronized
+ */
 public class TestSynchorized {
     Object o =new Object();
 

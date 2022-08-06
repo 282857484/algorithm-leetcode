@@ -1,44 +1,34 @@
-package com.leecode.algorithm.interview;
+package com.leecode.algorithm.easy.addBinary;
 
-public class maintest {
-    public static void main(String[] args) {
-        maintest x= new maintest();
-        System.out.println(x.addBinary("11", "1"));
-
-        String a = "123123123123123123";
-        String b = "123123123123123423";
-        if (a.compareTo(b) > 0) {
-            System.out.println("false");
-        } else {
-            System.out.println("true");
-        }
-    }
-
-    public int reverse(int x) {
-        StringBuilder reverse = new StringBuilder();
-        while (x != 0) {
-            int y = x % 10;
-            x /= 10;
-            reverse.append(y);
-        }
-        String reverseNum = reverse.reverse().toString();
-        String max = String.valueOf(Integer.MAX_VALUE);
-        String min = String.valueOf(Integer.MIN_VALUE);
-        if (x > 0) {
-            if (max.compareTo(reverseNum) < 0) {
-                return 0;
-            } else {
-                return Integer.valueOf(reverseNum);
-            }
-        } else {
-            if (min.compareTo(reverseNum) < 0) {
-                return 0;
-            } else {
-                return Integer.valueOf(reverseNum) * -1;
-            }
-        }
-    }
-
+/**
+ * 67. 二进制求和
+ * 给你两个二进制字符串，返回它们的和（用二进制表示）。
+ *
+ * 输入为 非空 字符串且只包含数字1和0。
+ *
+ *
+ *
+ * 示例1:
+ *
+ * 输入: a = "11", b = "1"
+ * 输出: "100"
+ * 示例2:
+ *
+ * 输入: a = "1010", b = "1011"
+ * 输出: "10101"
+ *
+ *
+ * 提示：
+ *
+ * 每个字符串仅由字符 '0' 或 '1' 组成。
+ * 1 <= a.length, b.length <= 10^4
+ * 字符串如果不是 "0" ，就都不含前导零。
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode.cn/problems/add-binary
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+public class Solution {
     public String addBinary(String a, String b) {
         // 可能进位
         char[] result = new char[Math.max(a.length(), b.length()) + 1];

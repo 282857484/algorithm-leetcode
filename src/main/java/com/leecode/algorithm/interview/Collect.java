@@ -13,6 +13,8 @@ import com.leecode.algorithm.middle.restoreIpAddresses.*;
 import com.leecode.algorithm.middle.patternMatching.*;
 import com.leecode.algorithm.easy.convertToBase7.*;
 import com.leecode.algorithm.hard.isMatch.*;
+// 马拉车
+import com.leecode.algorithm.middle.longestPalindrome.Solution6;
 
 import com.leecode.algorithm.node.LRUCache;
 import com.leecode.algorithm.node.MyHashMap;
