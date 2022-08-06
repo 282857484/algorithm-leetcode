@@ -19,15 +19,6 @@ class Solution {
     public static void main(String[] args) {
 
         Solution s = new Solution();
-//        ListNode l5 = new ListNode(5);
-//        ListNode l4 = new ListNode(4,l5);
-//        ListNode l3 = new ListNode(3,l4);
-//        ListNode l2 = new ListNode(2,l3);
-//        ListNode head = new ListNode(1,l2);
-
-//        ListNode l2 = new ListNode(2);
-//        ListNode head = new ListNode(1,l2);
-
         ListNode head = new ListNode(1);
 
         ListNode ln = s.removeNthFromEnd(head,1);
@@ -63,14 +54,22 @@ class Solution {
         }
         return noname.next;
     }
+    public ListNode removeNthFromEnd1(ListNode head, int n) {
+        ListNode pre = head;
+        ListNode post = head;
+        ListNode postFront = new ListNode(0, head);
+        ListNode ahead = postFront;
+        for (int i = 0; i < n; i++) {
+            pre = pre.next;
+        }
+        while (pre != null) {
+            pre = pre.next;
+            post = post.next;
+            postFront = postFront.next;
+        }
+        postFront.next = post.next;
+        return ahead.next;
+    }
 
-
-//    public class ListNode {
-//        int val;
-//        ListNode next;
-//        ListNode() {}
-//        ListNode(int val) { this.val = val; }
-//        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-//    }
 
 }
