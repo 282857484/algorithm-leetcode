@@ -1,6 +1,8 @@
 package com.leecode.algorithm.easy.fib;
 
 /**
+ * 509. 斐波那契数
+ *
  * 写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项（即 F(N)）。斐波那契数列的定义如下：
  *
  * F(0) = 0, F(1)= 1
@@ -32,5 +34,28 @@ public class Solution {
             dp[i] = (dp[i-1] + dp[i-2]) % 1000000007;
         }
         return dp[n];
+    }
+
+    /**
+     * 509. 斐波那契数
+     *
+     * @param n
+     * @return
+     */
+    public int fib1(int n) {
+        if (n == 0)  {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        int last1 = 0;
+        int last2 = 1;
+        for (int i = 2; i <= n; i++) {
+            int cur = last1 + last2;
+            last1 = last2;
+            last2 = cur;
+        }
+        return last2;
     }
 }
