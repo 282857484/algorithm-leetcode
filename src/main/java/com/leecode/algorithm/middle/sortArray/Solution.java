@@ -19,6 +19,7 @@ public class Solution {
     }
 
     /**
+     * 快排要素：随机值
      * 随机一个[l,r]中的值
      * @param nums
      * @param l
@@ -33,7 +34,7 @@ public class Solution {
     }
 
     public int randomizedPartition(int[] nums, int l, int r) {
-        int i = new Random().nextInt(r - l + 1) + l; // 随机选一个作为我们的主轴
+        int i = new Random().nextInt(r - l + 1) + l; // 区间内随机选一个作为我们的主轴
         swap(nums, r, i); // 交换到lr区间队尾
         return partition(nums, l, r);
     }
