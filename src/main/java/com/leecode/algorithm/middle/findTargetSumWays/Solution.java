@@ -37,6 +37,11 @@ public class Solution {
     /**
      * 01背包，需要把正数负数都填表
      * dp[i][j] 代表[0:i]个元素，相加的值等于j的个数
+     * 可以写出dp[i][j] = dp[i-1][j+nums[i]] + dp[i-1][j-nums[i]];
+     * 接下来处理边界问题
+     * 将数组超出的部分置为0，即：
+     * if (j+nums[i]) >= 左边界 then dp[i-1][j+nums[i]] = 0
+     * if (j-nums[i]) < 右边界 then dp[i-1][j-nums[i]] = 0
      * @param nums
      * @param target
      * @return
