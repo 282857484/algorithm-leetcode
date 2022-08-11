@@ -42,8 +42,8 @@ package com.leecode.algorithm.middle.change;
 public class Solution {
     /**
      * 完全背包
-     * 因为放零没有顺序
-     * 外层循环币可以避免结果重复    
+     * 排列组合的值无序，所以不能有重复
+     * 外层循环币可以避免结果重复
      *
      * @param amount
      * @param coins
