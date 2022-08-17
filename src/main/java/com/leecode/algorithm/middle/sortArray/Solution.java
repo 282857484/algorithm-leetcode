@@ -63,8 +63,12 @@ public class Solution {
         //练习排序
         //快排
         //quicksort(nums, 0, nums.length - 1);
-        //归并排序
-//        mergesort(nums, 0, nums.length - 1);
+        /**随机值快排
+        randomizedQuicksort(nums, 0, nums.length - 1);
+         */
+        /**归并排序
+        mergesort(nums, 0, nums.length - 1);
+         */
         /**
          堆排序
          */

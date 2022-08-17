@@ -2,11 +2,11 @@ package com.leecode.algorithm.middle.jump;
 
 /**
  * 跳跃游戏2
- * 贪心算法
+ * 贪心算法 1ms
  */
 class Solution {
     public int jump(int[] nums) {
-        int x= 0;
+        int jumpNums= 0;
         int end = nums.length-1;
         for (int start = 0; start < end; ) {
             int step = nums[start];
@@ -25,8 +25,8 @@ class Solution {
                 }
             }
             start = start +maxj;
-            x ++;
+            jumpNums ++;
         }
-        return x;
+        return jumpNums;
     }
 }

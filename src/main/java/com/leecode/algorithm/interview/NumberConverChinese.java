@@ -2,9 +2,8 @@ package com.leecode.algorithm.interview;
 
 public class NumberConverChinese {
     public static void main(String[] args) {
-        System.out.println("hello world");
         NumberConverChinese m = new NumberConverChinese();
-        m.numberConverChinese(9100300091L);
+        System.out.println(m.numberConverChinese(9100300091L));
     }
     public String numberConverChinese(long a) {
         long n = 0;
