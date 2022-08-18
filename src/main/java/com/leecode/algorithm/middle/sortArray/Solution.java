@@ -27,30 +27,61 @@ public class Solution {
      */
     public void randomizedQuicksort(int[] nums, int l, int r) {
         if (l < r) {
+            // 获取交换中点
             int pos = randomizedPartition(nums, l, r);
+            // 递归左区间
             randomizedQuicksort(nums, l, pos - 1);
+            // 递归右区间
             randomizedQuicksort(nums, pos + 1, r);
         }
     }
 
+    /**
+     * 要点是在区间中随机一个位置作为我们的轴pivot
+     * @param nums
+     * @param l
+     * @param r
+     * @return
+     */
     public int randomizedPartition(int[] nums, int l, int r) {
         int i = new Random().nextInt(r - l + 1) + l; // 区间内随机选一个作为我们的主轴
         swap(nums, r, i); // 交换到lr区间队尾
         return partition(nums, l, r);
     }
 
+    /**
+     * 快慢指针用来对左右数值进行交换
+     * 最后把pivot轴换到分界线上完成[l,r]的局部交换
+     * 返回pivot的绝对位置
+     * @param nums
+     * @param l
+     * @param r
+     * @return
+     */
     public int partition(int[] nums, int l, int r) {
         int pivot = nums[r];
-        int i = l - 1; // 大小分界线
+        int i = l; // 慢指针，等待交换的值，只有在交换之后往前移一位
         for (int j = l; j <= r - 1; ++j) {
             if (nums[j] <= pivot) {
-                i = i + 1;
                 swap(nums, i, j);
+                i = i + 1;
             }
         }
-        swap(nums, i + 1, r);
-        return i + 1;
+        swap(nums, i, r);
+        return i;
     }
+//    public int partition(int[] nums, int l, int r) {
+//        int pivot = nums[r];
+//        int i = l - 1; // 大小分界线
+//        for (int j = l; j <= r - 1; ++j) {
+//            if (nums[j] <= pivot) {
+//                i = i + 1;
+//                swap(nums, i, j);
+//            }
+//        }
+//        swap(nums, i + 1, r);
+//        return i + 1;
+//    }
 
     public void swap(int[] nums, int i, int j) {
         int temp = nums[i];
@@ -72,7 +103,7 @@ public class Solution {
         /**
          堆排序
          */
-        heapSort(nums);
+//        heapSort(nums);
         //以下排序过不了
         /*
         冒泡排序(O(n²))
@@ -91,6 +122,7 @@ public class Solution {
         HinsertSort(nums);
         */
         //shellsort(nums);
+        sortArray1(nums);
         return nums;
     }
 

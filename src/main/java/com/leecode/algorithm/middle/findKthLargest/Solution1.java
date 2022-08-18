@@ -37,7 +37,7 @@ public class Solution1 {
      * @return
      */
     public int findKthLargest(int[] nums, int k) {
-        return randomizedQuicksort(nums, 0, nums.length, k);
+        return randomizedQuicksort(nums, 0, nums.length-1, nums.length - k);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Solution1 {
      * @param l
      * @param r
      * @param k
-     * @return
+     * @return 中轴线
      */
     public int randomizedQuicksort(int[] nums, int l, int r, int k) {
         if (l < r) {
@@ -59,7 +59,7 @@ public class Solution1 {
                 return randomizedQuicksort(nums, pos + 1, r, k);
             }
         }
-        return -1;
+        return nums[k];
     }
 
     public int randomizedPartition(int[] nums, int l, int r) {
@@ -92,5 +92,10 @@ public class Solution1 {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+    public static void main(String[] args){
+        Solution1 s =  new Solution1();
+        System.out.println(s.findKthLargest(new int[]{5,4,1,2,3}, 3));
     }
 }
