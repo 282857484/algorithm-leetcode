@@ -39,6 +39,8 @@ import com.leecode.algorithm.node.Heap;
 // https://blog.csdn.net/Y_yibao/article/details/103822000
 // 重排链表
 import com.leecode.algorithm.middle.reorderList.*;
+// 搜索旋转排序数组
+import com.leecode.algorithm.middle.search;
 
 /**
  * 开关灯泡
